@@ -1,0 +1,96 @@
+<instance format="XCSP3" type="COP">
+  <variables>
+    <array id="m" note="-------------------------------------------------------VAR - m[i] is name of machine for tests[i]" size="[10]"> 0..2 </array>
+    <array id="p" note="plan of testing by machine p[i][debut,fin] for tests[i]" size="[10][2]"> 0..28 </array>
+  </variables>
+  <constraints>
+    <block note="some tests can be tested by just some machine">
+      <extension>
+        <list> m[6] </list>
+        <supports> 0 </supports>
+      </extension>
+      <extension>
+        <list> m[7] </list>
+        <supports> 1 </supports>
+      </extension>
+      <extension>
+        <list> m[8] </list>
+        <supports> 2 </supports>
+      </extension>
+      <extension>
+        <list> m[9] </list>
+        <supports> 0 2 </supports>
+      </extension>
+    </block>
+    <group note="deduire time debut and fin for each test">
+      <intension> eq(%0,add(%1,%2)) </intension>
+      <args> p[0][1] p[0][0] 2 </args>
+      <args> p[1][1] p[1][0] 4 </args>
+      <args> p[2][1] p[2][0] 3 </args>
+      <args> p[3][1] p[3][0] 4 </args>
+      <args> p[4][1] p[4][0] 3 </args>
+      <args> p[5][1] p[5][0] 2 </args>
+      <args> p[6][1] p[6][0] 1 </args>
+      <args> p[7][1] p[7][0] 2 </args>
+      <args> p[8][1] p[8][0] 3 </args>
+      <args> p[9][1] p[9][0] 5 </args>
+    </group>
+    <group note="deduire time debut and fin of test with each machine">
+      <intension> or(ge(%0,%1),le(%2,%3),ne(%4,%5)) </intension>
+      <args> p[0][0] p[1][1] p[0][1] p[1][0] m[0] m[1] </args>
+      <args> p[0][0] p[2][1] p[0][1] p[2][0] m[0] m[2] </args>
+      <args> p[0][0] p[3][1] p[0][1] p[3][0] m[0] m[3] </args>
+      <args> p[0][0] p[4][1] p[0][1] p[4][0] m[0] m[4] </args>
+      <args> p[0][0] p[5][1] p[0][1] p[5][0] m[0] m[5] </args>
+      <args> p[0][0] p[6][1] p[0][1] p[6][0] m[0] m[6] </args>
+      <args> p[0][0] p[7][1] p[0][1] p[7][0] m[0] m[7] </args>
+      <args> p[0][0] p[8][1] p[0][1] p[8][0] m[0] m[8] </args>
+      <args> p[0][0] p[9][1] p[0][1] p[9][0] m[0] m[9] </args>
+      <args> p[1][0] p[2][1] p[1][1] p[2][0] m[1] m[2] </args>
+      <args> p[1][0] p[3][1] p[1][1] p[3][0] m[1] m[3] </args>
+      <args> p[1][0] p[4][1] p[1][1] p[4][0] m[1] m[4] </args>
+      <args> p[1][0] p[5][1] p[1][1] p[5][0] m[1] m[5] </args>
+      <args> p[1][0] p[6][1] p[1][1] p[6][0] m[1] m[6] </args>
+      <args> p[1][0] p[7][1] p[1][1] p[7][0] m[1] m[7] </args>
+      <args> p[1][0] p[8][1] p[1][1] p[8][0] m[1] m[8] </args>
+      <args> p[1][0] p[9][1] p[1][1] p[9][0] m[1] m[9] </args>
+      <args> p[2][0] p[3][1] p[2][1] p[3][0] m[2] m[3] </args>
+      <args> p[2][0] p[4][1] p[2][1] p[4][0] m[2] m[4] </args>
+      <args> p[2][0] p[5][1] p[2][1] p[5][0] m[2] m[5] </args>
+      <args> p[2][0] p[6][1] p[2][1] p[6][0] m[2] m[6] </args>
+      <args> p[2][0] p[7][1] p[2][1] p[7][0] m[2] m[7] </args>
+      <args> p[2][0] p[8][1] p[2][1] p[8][0] m[2] m[8] </args>
+      <args> p[2][0] p[9][1] p[2][1] p[9][0] m[2] m[9] </args>
+      <args> p[3][0] p[4][1] p[3][1] p[4][0] m[3] m[4] </args>
+      <args> p[3][0] p[5][1] p[3][1] p[5][0] m[3] m[5] </args>
+      <args> p[3][0] p[6][1] p[3][1] p[6][0] m[3] m[6] </args>
+      <args> p[3][0] p[7][1] p[3][1] p[7][0] m[3] m[7] </args>
+      <args> p[3][0] p[8][1] p[3][1] p[8][0] m[3] m[8] </args>
+      <args> p[3][0] p[9][1] p[3][1] p[9][0] m[3] m[9] </args>
+      <args> p[4][0] p[5][1] p[4][1] p[5][0] m[4] m[5] </args>
+      <args> p[4][0] p[6][1] p[4][1] p[6][0] m[4] m[6] </args>
+      <args> p[4][0] p[7][1] p[4][1] p[7][0] m[4] m[7] </args>
+      <args> p[4][0] p[8][1] p[4][1] p[8][0] m[4] m[8] </args>
+      <args> p[4][0] p[9][1] p[4][1] p[9][0] m[4] m[9] </args>
+      <args> p[5][0] p[6][1] p[5][1] p[6][0] m[5] m[6] </args>
+      <args> p[5][0] p[7][1] p[5][1] p[7][0] m[5] m[7] </args>
+      <args> p[5][0] p[8][1] p[5][1] p[8][0] m[5] m[8] </args>
+      <args> p[5][0] p[9][1] p[5][1] p[9][0] m[5] m[9] </args>
+      <args> p[6][0] p[7][1] p[6][1] p[7][0] m[6] m[7] </args>
+      <args> p[6][0] p[8][1] p[6][1] p[8][0] m[6] m[8] </args>
+      <args> p[6][0] p[9][1] p[6][1] p[9][0] m[6] m[9] </args>
+      <args> p[7][0] p[8][1] p[7][1] p[8][0] m[7] m[8] </args>
+      <args> p[7][0] p[9][1] p[7][1] p[9][0] m[7] m[9] </args>
+      <args> p[8][0] p[9][1] p[8][1] p[9][0] m[8] m[9] </args>
+    </group>
+    <group note="constraint of resource">
+      <intension> or(ge(%0,%1),le(%2,%3)) </intension>
+      <args> p[1][0] p[2][1] p[1][1] p[2][0] </args>
+      <args> p[1][0] p[3][1] p[1][1] p[3][0] </args>
+      <args> p[2][0] p[3][1] p[2][1] p[3][0] </args>
+    </group>
+  </constraints>
+  <objectives>
+    <minimize type="maximum"> p[][1] </minimize>
+  </objectives>
+</instance>
